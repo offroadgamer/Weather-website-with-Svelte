@@ -9,14 +9,26 @@
 	const api_key_2 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Bergen&aqi=no"
 	const api_key_3 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Trondheim&aqi=no"
 
-	const cities = [
-		{},
-		{},
-		{}
+	const weather_info = [
+
+		{name: "Oslo",
+		temperature_c: 0,
+		wind_ms: 0,
+		feels_like: 0,
+		},
+
+		{name: "Bergen",
+		temperature_c: 0,
+		wind_ms: 0,
+		feels_like:  0,
+		},
+
+		{name: "Trondheim",
+		temperature_c: 0,
+		wind_ms: 0,
+		feels_like: 0,
+		},
 	]
-	const city_1 = []
-	const city_2 = []
-	const city_3 = []
 
 	function connectToApiCity1() {
 		fetch(api_key_1).then(
@@ -25,11 +37,14 @@
 					console.log("API Status: OK")
 					response.json().then(
 						json => {
-							let city = json.location.name
 							let temperature = json.current.temp_c
-							let wind = json.current.wind_kph / 3.6
-							let feels_like = json.current.feelslike_c
-							city_1.push(city, temperature, wind.toFixed(), feels_like)
+							let windKph = json.current.wind_kph / 3.6
+							let windStr = windKph.toFixed(2)
+							let wind = Number(windStr)
+							let feelsLike = json.current.feelslike_c
+							weather_info[0].temperature_c = temperature
+							weather_info[0].wind_ms = wind
+							weather_info[0].feels_like = feelsLike
 						}
 					)
 				} else {
@@ -45,11 +60,14 @@
 					console.log("API Status: OK")
 					response.json().then(
 						json => {
-							let city = json.location.name
 							let temperature = json.current.temp_c
-							let wind = json.current.wind_kph / 3.6
-							let feels_like = json.current.feelslike_c
-							city_2.push(city, temperature, wind.toFixed(), feels_like)
+							let windKph = json.current.wind_kph / 3.6
+							let windStr = windKph.toFixed(2)
+							let wind = Number(windStr)
+							let feelsLike = json.current.feelslike_c
+							weather_info[1].temperature_c = temperature
+							weather_info[1].wind_ms = wind
+							weather_info[1].feels_like = feelsLike
 						}
 					)
 				} else {
@@ -65,11 +83,14 @@
 					console.log("API Status: OK")
 					response.json().then(
 						json => {
-							let city = json.location.name
 							let temperature = json.current.temp_c
-							let wind = json.current.wind_kph / 3.6
-							let feels_like = json.current.feelslike_c
-							city_3.push(city, temperature, wind.toFixed(), feels_like)
+							let windKph = json.current.wind_kph / 3.6
+							let windStr = windKph.toFixed(2)
+							let wind = Number(windStr)
+							let feelsLike = json.current.feelslike_c
+							weather_info[2].temperature_c = temperature
+							weather_info[2].wind_ms = wind
+							weather_info[2].feels_like = feelsLike
 						}
 					)
 				} else {
@@ -81,27 +102,6 @@
 	connectToApiCity1()
 	connectToApiCity2()
 	connectToApiCity3()
-
-	const weather_info = [
-
-		{name: "Oslo",
-		temperature_c: 9.2,
-		wind_ms: 13,
-		feels_like:  8.4,
-		},
-
-		{name: "Bergen",
-		temperature_c: 11,
-		wind_ms: 4,
-		feels_like:  9.1,
-		},
-
-		{name: "Trondheim",
-		temperature_c: 6,
-		wind_ms: 4,
-		feels_like: 5.8,
-		},
-	]
 
 </script>
 
