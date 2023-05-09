@@ -7,11 +7,12 @@
         <img class="navbar-logo" src="src/lib/images/logo.png" alt="logo">
     </div>
     <div class="links">
-        <ul class="navbar-links">
-            <li><a class="navbar-links-item" href="+page.svelte">Oslo</a></li>
-            <li><a class="navbar-links-item" href="+page.svelte">Bergen</a></li>
-            <li><a class="navbar-links-item" href="+page.svelte">Trondheim</a></li>
-        </ul>
+        <!--<ul class="navbar-links">
+				<li><a class="navbar-links-item" href="+page.svelte">Oslo</a></li>
+				<li><a class="navbar-links-item" href="+page.svelte">Bergen</a></li>
+				<li><a class="navbar-links-item" href="+page.svelte">Trondheim</a></li>
+			</ul> Denne skal kanskje brukes senere, men for nå har jeg ingenting jeg kan 
+			linke til her, så derfor kommenterer jeg dem ut for øyeblikket.-->
     </div>
     <div class="info">
         <p>Om</p>
@@ -43,6 +44,7 @@
 		width: 60%;
 	}
 
+	/*
 	.navbar-links {
 		font-weight: 700;
 		list-style: none;
@@ -60,6 +62,7 @@
     .navbar-links-item:hover {
         color: #aaaaaa;
     }
+	*/
 
 	.info {
 		width: 20%;

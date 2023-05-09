@@ -5,9 +5,11 @@
 	import WeatherBox from "./WeatherBox.svelte";
 	import "./weather.json";
 
-	const api_key_1 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Oslo&aqi=no"
-	const api_key_2 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Bergen&aqi=no"
-	const api_key_3 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Trondheim&aqi=no"
+	const api_key_1 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Oslo&aqi=yes"
+	const api_key_2 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Bergen&aqi=yes"
+	const api_key_3 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Trondheim&aqi=yes"
+
+	// Denne Array-en lagrer dataen som brukes for å hentes ut i HTML elementene som viser vær-informasjonen. 
 
 	const weather_info = [
 
@@ -29,6 +31,9 @@
 		feels_like: 0,
 		},
 	]
+
+	// De 3 neste funskjonene er ansvarlig for å hente ut data fra API-en. Her henter de fra api-key variablene 
+	// lenger opp i koden, før dataen blir lagret i variabler, og så lagt til i en Array.
 
 	function connectToApiCity1() {
 		fetch(api_key_1).then(
@@ -113,6 +118,8 @@
 		</div>
 		<h2>Sjekk byen din!</h2>
 		<div class="weather-cards-box">
+			<!-- Denne funskjonen lager "WeatherBox"-er basert på hvor mange elementer det er i weather_info
+				listen i script delen av Svelte filen.-->
 			{#each weather_info as weather}
 				<WeatherBox weather={weather}></WeatherBox>
 			{/each}

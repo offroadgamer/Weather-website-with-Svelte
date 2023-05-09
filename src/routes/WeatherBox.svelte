@@ -2,6 +2,9 @@
     export let weather;
 </script>
 
+<!-- Her bruker jeg en variabel som heter "weather" for å kalle på forskjellige ting fra weather_info Array-en
+    fra +page.svelte filen, slik at den kan generere HTML elementene som viser vær-informasjonen. -->
+
 <div class="weather-box">
     <div class="title">
         <h2>{weather.name}</h2>
