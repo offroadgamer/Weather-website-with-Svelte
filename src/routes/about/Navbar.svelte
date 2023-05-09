@@ -68,5 +68,8 @@
 		width: 20%;
         font-size: 20px;
 		font-weight: 700;
+		display: flex;
+		justify-content: center;
+		font-size: 25px;
     }
 </style>

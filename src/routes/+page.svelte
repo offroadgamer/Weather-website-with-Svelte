@@ -5,9 +5,9 @@
 	import WeatherBox from "./WeatherBox.svelte";
 	import "./weather.json";
 
-	const api_key_1 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Oslo&aqi=yes"
-	const api_key_2 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Bergen&aqi=yes"
-	const api_key_3 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Trondheim&aqi=yes"
+	const api_key_1 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Oslo&aqi=no"
+	const api_key_2 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Bergen&aqi=no"
+	const api_key_3 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Trondheim&aqi=no"
 
 	// Denne Array-en lagrer dataen som brukes for å hentes ut i HTML elementene som viser vær-informasjonen. 
 
