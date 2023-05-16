@@ -1,0 +1,8 @@
+Ting å endre på i koden:
+
+
+API:
+
+Promises
+eller
+Async await

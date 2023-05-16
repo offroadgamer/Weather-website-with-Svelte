@@ -3,11 +3,10 @@
 	import Navbar from "./about/Navbar.svelte";
 	import Footer from "./about/Footer.svelte";
 	import WeatherBox from "./WeatherBox.svelte";
-	import "./weather.json";
 
-	const api_key_1 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Oslo&aqi=yes"
-	const api_key_2 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Bergen&aqi=yes"
-	const api_key_3 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Trondheim&aqi=yes"
+	const api_key_1 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Oslo&aqi="
+	const api_key_2 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Bergen&aqi="
+	const api_key_3 = "http://api.weatherapi.com/v1/current.json?key=8de6c8ee85794fdb967110245230105&q=Trondheim&aqi="
 
 	// Denne Array-en lagrer dataen som brukes for å hentes ut i HTML elementene som viser vær-informasjonen. 
 
@@ -35,79 +34,71 @@
 	// De 3 neste funskjonene er ansvarlig for å hente ut data fra API-en. Her henter de fra api-key variablene 
 	// lenger opp i koden, før dataen blir lagret i variabler, og så lagt til i en Array.
 
-	function connectToApiCity1() {
-		fetch(api_key_1).then(
-			response => {
-				if (response.status == 200) {
-					console.log("API Status: OK")
-					response.json().then(
-						json => {
-							let temperature = json.current.temp_c
-							let windKph = json.current.wind_kph / 3.6
-							let windStr = windKph.toFixed(2)
-							let wind = Number(windStr)
-							let feelsLike = json.current.feelslike_c
-							weather_info[0].temperature_c = temperature
-							weather_info[0].wind_ms = wind
-							weather_info[0].feels_like = feelsLike
-						}
-					)
-				} else {
-					console.log("API status: FAIL")
-				}
-			})
-		}
+	
+	async function connectToAPI1() {
+    const response = await fetch(api_key_1)
+    if (response.status == 200) {
+        console.log("API Status City 1: OK")
+        const json = await response.json()
+        let temperature = json.current.temp_c
+        let windKph = json.current.wind_kph / 3.6
+        let windStr = windKph.toFixed(2)
+        let wind = Number(windStr)
+        let feelsLike = json.current.feelslike_c
+        weather_info[0].temperature_c = temperature
+        weather_info[0].wind_ms = wind
+        weather_info[0].feels_like = feelsLike					
+    } else {
+        console.log("API status City 1: FAIL")
+    }
+        
+	}
 
-	function connectToApiCity2() {
-		fetch(api_key_2).then(
-			response => {
-				if (response.status == 200) {
-					console.log("API Status: OK")
-					response.json().then(
-						json => {
-							let temperature = json.current.temp_c
-							let windKph = json.current.wind_kph / 3.6
-							let windStr = windKph.toFixed(2)
-							let wind = Number(windStr)
-							let feelsLike = json.current.feelslike_c
-							weather_info[1].temperature_c = temperature
-							weather_info[1].wind_ms = wind
-							weather_info[1].feels_like = feelsLike
-						}
-					)
-				} else {
-					console.log("API status: FAIL")
-				}
-			})
-		}
+	async function connectToAPI2() {
+    const response = await fetch(api_key_2)
+    if (response.status == 200) {
+        console.log("API Status City 2: OK")
+        const json = await response.json()
+        let temperature = json.current.temp_c
+        let windKph = json.current.wind_kph / 3.6
+        let windStr = windKph.toFixed(2)
+        let wind = Number(windStr)
+        let feelsLike = json.current.feelslike_c
+        weather_info[1].temperature_c = temperature
+        weather_info[1].wind_ms = wind
+        weather_info[1].feels_like = feelsLike					
+    } else {
+        console.log("API status City 2: FAIL")
+    }
+        
+	}
 
-	function connectToApiCity3() {
-		fetch(api_key_3).then(
-			response => {
-				if (response.status == 200) {
-					console.log("API Status: OK")
-					response.json().then(
-						json => {
-							let temperature = json.current.temp_c
-							let windKph = json.current.wind_kph / 3.6
-							let windStr = windKph.toFixed(2)
-							let wind = Number(windStr)
-							let feelsLike = json.current.feelslike_c
-							weather_info[2].temperature_c = temperature
-							weather_info[2].wind_ms = wind
-							weather_info[2].feels_like = feelsLike
-						}
-					)
-				} else {
-					console.log("API status: FAIL")
-				}
-			})
-		}
+	async function connectToAPI3() {
+    const response = await fetch(api_key_3)
+    if (response.status == 200) {
+        console.log("API Status City 3: OK")
+        const json = await response.json()
+        let temperature = json.current.temp_c
+        let windKph = json.current.wind_kph / 3.6
+        let windStr = windKph.toFixed(2)
+        let wind = Number(windStr)
+        let feelsLike = json.current.feelslike_c
+        weather_info[2].temperature_c = temperature
+        weather_info[2].wind_ms = wind
+        weather_info[2].feels_like = feelsLike					
+    } else {
+        console.log("API status City 3: FAIL")
+    }
+        
+	}
 
-	connectToApiCity1()
-	connectToApiCity2()
-	connectToApiCity3()
+	function runApiCall() {
+		connectToAPI1()
+		connectToAPI2()
+		connectToAPI3()
+	}
 
+	runApiCall()
 </script>
 
 <body class="body">
@@ -123,6 +114,9 @@
 			{#each weather_info as weather}
 				<WeatherBox weather={weather}></WeatherBox>
 			{/each}
+		</div>
+		<div class="reload-button-box">
+			<button class="reload-button" on:click={runApiCall}>Reload Weather</button>
 		</div>
 	</div>
 	<Footer></Footer>
@@ -149,5 +143,27 @@
 		flex-direction: row;
 		width: 70vw;
 		justify-content: center;
+		margin-bottom: 30px;
+	}
+
+	.reload-button-box {
+		background: transparent;
+		border: 2px solid #ffffff;
+		min-height: 50px;
+		width: 10vw;	
+		margin: auto;
+		display: flex;
+		justify-content: center;
+	}
+
+	.reload-button {
+		border: none;
+		background: none;
+		font-size: min(3vw, 18px);
+		color: #ffffff;
+	}
+
+	.reload-button:hover {
+		color: #333333;	 
 	}
 </style>
